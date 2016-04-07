@@ -4,6 +4,8 @@ class CreateQuestions < ActiveRecord::Migration
       t.text :body
       t.text :response
       t.integer :value
+      t.integer :show_id
+      t.integer :category_id
 
       t.timestamps null: false
     end
