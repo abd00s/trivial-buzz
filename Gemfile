@@ -49,3 +49,6 @@ group :development do
   gem 'spring'
 end
 
+# For controller-level `respond_to'
+gem 'responders', '~> 2.0'
+
