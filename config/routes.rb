@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :shows, only: :show
       resources :rounds, only: :show
       resources :questions, only: :show
+      resources :categories, only: :show
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
