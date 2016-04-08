@@ -10,4 +10,12 @@ class Category < ActiveRecord::Base
     end
     shows.uniq
   end
+
+  # Scope
+  # Category.most_common(5)
+  # Returns 5 most common categories
+  # IMPORTANT: categories of questions revealed!
+  def self.most_common(number=1)
+    order('questions_count DESC').limit(number)
+  end
 end
