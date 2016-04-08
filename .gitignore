@@ -13,4 +13,4 @@
 /tmp
 
 # Ignore Seed questions
-/lib/seeds/
+/lib/seeds/mini.json
