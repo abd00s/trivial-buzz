@@ -14,7 +14,7 @@ parsed_json.each do |question|
   q = Question.new
   q.body = question["question"]
   q.response = question["answer"]
-  q.value = if q.value
+  q.value = if question["value"]
     question["value"].gsub(/\D/,'').to_i
   else
     0
