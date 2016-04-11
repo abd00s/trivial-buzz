@@ -1,9 +1,9 @@
 class Category < ActiveRecord::Base
   has_many :questions
 
-  # @category.appears_in
+  # @category.shows
   # Returns instances of Show where @category appeared
-  def appears_in
+  def shows
     self.questions.collect {|question| question.round.show}.uniq
   end
 
