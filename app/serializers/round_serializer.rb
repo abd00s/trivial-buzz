@@ -3,5 +3,7 @@ class RoundSerializer < ActiveModel::Serializer
 
   has_one :show, serializer: ShowSimpleSerializer, root: :from_show
 
+  has_many :categories
+
   has_many :questions
 end
