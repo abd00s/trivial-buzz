@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     scope :v1 do
-      resources :shows, only: :show
+      resources :shows, only: [:index, :show]
       resources :rounds, only: :show
       resources :questions, only: :show
       resources :categories, only: :show
