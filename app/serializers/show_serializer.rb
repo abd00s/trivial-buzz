@@ -3,6 +3,6 @@ class ShowSerializer < ActiveModel::Serializer
 
   has_many :categories
 
-  has_many :rounds
+  has_many :rounds, serializer: RoundSimpleSerializer
 
 end
