@@ -10,7 +10,7 @@ class Api::ShowsController < ApiController
       end
 
     @shows = Show.order(sorting_order)
-      .includes(rounds: [questions: [:category]])
+      .includes(rounds: [{questions: :category}])
       .page(params[:page]).per(3)
 
     respond_with @shows, each_serializer: ShowSerializer, meta: pagination_dict(@shows)
