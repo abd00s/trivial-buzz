@@ -17,7 +17,7 @@ class Api::ShowsController < ApiController
   end
 
   def show
-    @show = Show.find(params[:id])
+    @show = Show.includes(rounds: [{questions: :category}]).find(params[:id])
     respond_with @show, serializer: ShowSerializer
   end
 end
