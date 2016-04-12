@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     scope :v1 do
       resources :shows, only: [:index, :show]
       resources :rounds, only: :show
+      get 'questions/random' => 'questions#random'
       resources :questions, only: :show
       resources :categories, only: :show
     end
