@@ -1,12 +1,18 @@
 class Api::ShowsController < ApiController
   def index
-    @shows = if params[:chrono_sort] == "old"
-                Show.order(:air_date).page(params[:page]).per(3)
-              elsif params[:chrono_sort] == "recent"
-                Show.order(air_date: :desc).page(params[:page]).per(3)
-              else
-                Show.page(params[:page]).per(3)
-              end
+    sorting_order =
+      if params[:chrono_sort] == "old"
+        {air_date: :asc}
+      elsif params[:chrono_sort] == "recent"
+        {air_date: :desc}
+      else
+        {}
+      end
+
+    @shows = Show.order(sorting_order)
+      .includes(rounds: [questions: [:category]])
+      .page(params[:page]).per(3)
+
     respond_with @shows, each_serializer: ShowSerializer, meta: pagination_dict(@shows)
   end
 
