@@ -31,5 +31,8 @@ module Jeopardy
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Added in order to create database views from a migration
+    config.active_record.schema_format = :sql
   end
 end
