@@ -152,6 +152,28 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: searches; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW searches AS
+ SELECT questions.id AS searchable_id,
+    'Question'::text AS searchable_type,
+    questions.body AS term
+   FROM questions
+UNION
+ SELECT questions.id AS searchable_id,
+    'Question'::text AS searchable_type,
+    questions.response AS term
+   FROM questions
+UNION
+ SELECT categories.id AS searchable_id,
+    'Category'::text AS searchable_type,
+    categories.name AS term
+   FROM (categories
+     JOIN questions ON ((questions.category_id = categories.id)));
+
+
+--
 -- Name: shows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -285,4 +307,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160407211746');
 INSERT INTO schema_migrations (version) VALUES ('20160419201631');
 
 INSERT INTO schema_migrations (version) VALUES ('20160419211428');
+
+INSERT INTO schema_migrations (version) VALUES ('20160419215206');
 
