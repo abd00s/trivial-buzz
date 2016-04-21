@@ -281,6 +281,20 @@ CREATE INDEX questions_response ON questions USING gin (to_tsvector('english'::r
 
 
 --
+-- Name: searches_term; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX searches_term ON searches USING gin (to_tsvector('english'::regconfig, term));
+
+
+--
+-- Name: searches_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX searches_type ON searches USING gin (to_tsvector('english'::regconfig, searchable_type));
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -312,4 +326,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160419211428');
 INSERT INTO schema_migrations (version) VALUES ('20160419215206');
 
 INSERT INTO schema_migrations (version) VALUES ('20160420200101');
+
+INSERT INTO schema_migrations (version) VALUES ('20160421154434');
 
