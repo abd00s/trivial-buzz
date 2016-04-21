@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'questions/random' => 'questions#random'
       resources :questions, only: :show
       resources :categories, only: :show
+      get 'searches/new'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
