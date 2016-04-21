@@ -10,8 +10,5 @@ json.questions @question_results do |question|
   json.body question.body
   json.response question.response
   json.value question.value
-  json.category question.category.name
-  json.from_round "#{api_round_url(question.round)}.json"
-  json.from_show "#{api_show_url(question.round.show)}.json"
   json.url  "#{api_question_url(question.id)}.json"
 end
