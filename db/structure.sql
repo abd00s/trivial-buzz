@@ -152,10 +152,10 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: searches; Type: VIEW; Schema: public; Owner: -
+-- Name: searches; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE VIEW searches AS
+CREATE MATERIALIZED VIEW searches AS
  SELECT questions.id AS searchable_id,
     'Question'::text AS searchable_type,
     questions.body AS term
@@ -170,7 +170,8 @@ UNION
     'Category'::text AS searchable_type,
     categories.name AS term
    FROM (categories
-     JOIN questions ON ((questions.category_id = categories.id)));
+     JOIN questions ON ((questions.category_id = categories.id)))
+  WITH NO DATA;
 
 
 --
@@ -309,4 +310,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160419201631');
 INSERT INTO schema_migrations (version) VALUES ('20160419211428');
 
 INSERT INTO schema_migrations (version) VALUES ('20160419215206');
+
+INSERT INTO schema_migrations (version) VALUES ('20160420200101');
 
