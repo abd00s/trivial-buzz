@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :rounds, only: :show
       get 'questions/random' => 'questions#random'
       resources :questions, only: :show
-      resources :categories, only: :show
+      resources :categories, only: [:index, :show]
       get 'searches/new'
     end
   end
