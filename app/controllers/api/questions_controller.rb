@@ -11,8 +11,19 @@ class Api::QuestionsController < ApiController
     # Optional parameters `newer_than` and `older_than` define bounds if present
     # Query string may include an upper and/or a lower bound or none.
 
-    minimum = Date.parse(params[:newer_than]) if params[:newer_than].present?
-    maximum = Date.parse(params[:older_than]) if params[:older_than].present?
+    minimum =
+      begin
+        Date.parse(params[:newer_than]) if params[:newer_than].present?
+      rescue ArgumentError, TypeError
+        render json: {Error: "Invalid lower bound, format should be YYYY-DD-MM"} and return
+      end
+
+    maximum =
+      begin
+        Date.parse(params[:older_than]) if params[:older_than].present?
+      rescue ArgumentError, TypeError
+        render json: {Error: "Invalid upper bound, format should be YYYY-DD-MM"} and return
+      end
 
     if minimum.present? && maximum.present? && minimum > maximum
       render json: {Error: "Invalid range; minimum is greater than maximum."} and return
