@@ -16,7 +16,7 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:newer_than])
         rescue ArgumentError, TypeError
-          render json: {Error: "Invalid lower bound, format should be YYYY-DD-MM"} and return
+          display_error("Invalid lower bound, format should be YYYY-DD-MM") and return
         end
     end
 
@@ -25,12 +25,12 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:older_than])
         rescue ArgumentError, TypeError
-          render json: {Error: "Invalid upper bound, format should be YYYY-DD-MM"} and return
+          display_error("Invalid upper bound, format should be YYYY-DD-MM") and return
         end
     end
 
     if minimum.present? && maximum.present? && minimum > maximum
-      render json: {Error: "Invalid range; minimum is greater than maximum."} and return
+      display_error("Invalid range; minimum is greater than maximum.") and return
     end
 
     # We make use of chaining scopes defined on Question.
@@ -43,7 +43,13 @@ class Api::QuestionsController < ApiController
     else
       oldest = Show.order(:air_date).first.air_date
       newest = Show.order(air_date: :desc).first.air_date
-      render json: {Error: "No questions in selected range; no shows aired in range or bounds are outside of valid range #{oldest} to #{newest}"}
+      display_error("No questions in selected range; no shows aired in range or" \
+        + "bounds are outside of valid range #{oldest} to #{newest}") and return
     end
+  end
+
+  private
+  def display_error(message)
+    render json: {Error: "#{message}"}
   end
 end
