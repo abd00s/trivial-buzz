@@ -57,3 +57,8 @@ gem 'active_model_serializers'
 gem 'kaminari'
 
 gem 'textacular', '~> 3.0'
+
+gem 'swagger-blocks'
+
+gem 'swagger_engine'
+
