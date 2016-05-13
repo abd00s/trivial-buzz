@@ -25,12 +25,18 @@ class Apidocs < ActiveRecord::Base
   end
 
   SWAGGERED_CLASSES = [
-    Api::QuestionsController,
-    Api::RoundsController,
-    Api::SearchesController,
-    Api::CategoriesController,
-    Api::ShowsController,
+    QuestionsSwaggerController,
+    RoundsSwaggerController,
+    SearchesSwaggerController,
+    CategoriesSwaggerController,
+    ShowsSwaggerController,
+    QuestionSwaggerModel,
+    RoundSwaggerModel,
+    SearchSwaggerModel,
+    ShowSwaggerModel,
+    CategorySwaggerModel,
     ErrorModel,
+    MetaSwaggerModel,
     self,
   ].freeze
 
