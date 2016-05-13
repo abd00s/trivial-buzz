@@ -38,4 +38,21 @@ class ShowSwaggerModel
       key :items, {:'$ref' => 'RoundsShows'}
     end
   end
+
+  swagger_schema :ShowRound do
+    property :id do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :show_number do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :air_date do
+      key :type, :string
+    end
+    property :show_url do
+      key :type, :string
+    end
+  end
 end

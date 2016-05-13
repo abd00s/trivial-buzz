@@ -2,7 +2,7 @@ class ShowsSwaggerController < Api::QuestionsController
 
   swagger_path '/shows.json' do
     operation :get do
-      key :description, "Use to all shows with three objects per page. " \
+      key :description, "Use to retrieve all shows with three objects per page. " \
                         "</br> _Explanation of response attributes_" \
                         "</br> **shows**: Array of 3 shows" \
                         "</br> #{"&nbsp;"*4} **id**: ID of show" \
