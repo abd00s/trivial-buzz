@@ -11,21 +11,21 @@ class ShowsSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \
                         "</br> #{"&nbsp;"*8} **name**: Category name" \
-                        "</br> #{"&nbsp;"*8} **category_url**: Link to category" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to category" \
                         "</br> #{"&nbsp;"*4} **rounds**: Array of rounds appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of rounds" \
                         "</br> #{"&nbsp;"*8} **name**: Jeopardy!, Double Jeopardy! or Final Jeopardy!" \
-                        "</br> #{"&nbsp;"*8} **round_url**: Link to round" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to round" \
                         "</br> #{"&nbsp;"*8} **questions**: Array of questions appearing in round" \
                         "</br> #{"&nbsp;"*12} **id**: ID of question" \
                         "</br> #{"&nbsp;"*12} **body**: Jeopardy! clue" \
                         "</br> #{"&nbsp;"*12} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*12} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
-                        "</br> #{"&nbsp;"*12} **question_url**: Link to question" \
+                        "</br> #{"&nbsp;"*12} **url**: Link to question" \
                         "</br> #{"&nbsp;"*12} **category**: Category of question" \
                         "</br> #{"&nbsp;"*16} **id**: ID of category" \
                         "</br> #{"&nbsp;"*16} **name**: Category name" \
-                        "</br> #{"&nbsp;"*16} **category_url**: link to category" \
+                        "</br> #{"&nbsp;"*16} **url**: link to category" \
                         "</br> **meta**: Information on pages" \
                         "</br> #{"&nbsp;"*4} **current_page**: Current page" \
                         "</br> #{"&nbsp;"*4} **next_page**: Next page, if available" \
@@ -78,21 +78,21 @@ class ShowsSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \
                         "</br> #{"&nbsp;"*8} **name**: Category name" \
-                        "</br> #{"&nbsp;"*8} **category_url**: Link to category" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to category" \
                         "</br> #{"&nbsp;"*4} **rounds**: Array of rounds appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of rounds" \
                         "</br> #{"&nbsp;"*8} **name**: Jeopardy!, Double Jeopardy! or Final Jeopardy!" \
-                        "</br> #{"&nbsp;"*8} **round_url**: Link to round" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to round" \
                         "</br> #{"&nbsp;"*8} **questions**: Array of questions appearing in round" \
                         "</br> #{"&nbsp;"*12} **id**: ID of question" \
                         "</br> #{"&nbsp;"*12} **body**: Jeopardy! clue" \
                         "</br> #{"&nbsp;"*12} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*12} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
-                        "</br> #{"&nbsp;"*12} **question_url**: Link to question" \
+                        "</br> #{"&nbsp;"*12} **url**: Link to question" \
                         "</br> #{"&nbsp;"*12} **category**: Category of question" \
                         "</br> #{"&nbsp;"*16} **id**: ID of category" \
                         "</br> #{"&nbsp;"*16} **name**: Category name" \
-                        "</br> #{"&nbsp;"*16} **category_url**: link to category"
+                        "</br> #{"&nbsp;"*16} **url**: link to category"
       key :summary, 'Retrieve a single show by ID'
       key :operationId, 'findShowById'
       key :tags, [

@@ -37,7 +37,7 @@ class RoundSwaggerModel
     property :name do
       key :type, :string
     end
-    property :round_url do
+    property :url do
       key :type, :string
     end
     property :questions do

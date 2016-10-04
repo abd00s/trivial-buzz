@@ -31,7 +31,7 @@ class QuestionSwaggerModel
       key :type, :integer
       key :format, :int64
     end
-    property :question_url do
+    property :url do
       key :type, :string
     end
     property :category do
@@ -42,7 +42,7 @@ class QuestionSwaggerModel
       property :name do
         key :type, :string
       end
-      property :category_url do
+      property :url do
         key :type, :string
       end
     end

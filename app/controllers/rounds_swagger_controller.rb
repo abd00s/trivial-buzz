@@ -15,17 +15,17 @@ class RoundsSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in round" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \
                         "</br> #{"&nbsp;"*8} **name**: Category name" \
-                        "</br> #{"&nbsp;"*8} **category_url**: Link to category" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to category" \
                         "</br> #{"&nbsp;"*4} **questions**: Array of questions appearing in round" \
                         "</br> #{"&nbsp;"*8} **id**: ID of question" \
                         "</br> #{"&nbsp;"*8} **body**: Jeopardy! clue" \
                         "</br> #{"&nbsp;"*8} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*8} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
-                        "</br> #{"&nbsp;"*8} **question_url**: Link to question" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to question" \
                         "</br> #{"&nbsp;"*8} **category**: Category of question" \
                         "</br> #{"&nbsp;"*12} **id**: ID of category" \
                         "</br> #{"&nbsp;"*12} **name**: Category name" \
-                        "</br> #{"&nbsp;"*12} **category_url**: link to category"
+                        "</br> #{"&nbsp;"*12} **url**: link to category"
       key :summary, 'Retrieve a single round by ID'
       key :operationId, 'findRoundById'
       key :tags, [

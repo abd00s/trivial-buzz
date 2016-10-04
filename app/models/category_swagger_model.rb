@@ -9,7 +9,7 @@ class CategorySwaggerModel
     property :name do
       key :type, :string
     end
-    property :category_url do
+    property :url do
       key :type, :string
     end
     property :questions_count do
@@ -26,7 +26,7 @@ class CategorySwaggerModel
     property :name do
       key :type, :string
     end
-    property :category_url do
+    property :url do
       key :type, :string
     end
   end
