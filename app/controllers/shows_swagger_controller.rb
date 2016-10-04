@@ -40,7 +40,7 @@ class ShowsSwaggerController < Api::QuestionsController
       parameter do
         key :name, :page
         key :in, :query
-        key :description, 'Go to particular page.'
+        key :description, 'Go to particular page. [Optional]'
         key :required, false
         key :type, :integer
         key :format, :int64
@@ -48,7 +48,7 @@ class ShowsSwaggerController < Api::QuestionsController
       parameter do
         key :name, :chrono_sort
         key :in, :query
-        key :description, '"old" to sort in ascending chronological order, "recent" for descending.'
+        key :description, '"old" to sort in ascending chronological order, "recent" for descending. [Optional]'
         key :required, false
         key :type, :string
       end
