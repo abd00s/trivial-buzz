@@ -45,4 +45,22 @@ class RoundSwaggerModel
       key :items, {:'$ref' => 'QuestionsRoundsShows'}
     end
   end
+
+  # Used in ../questions/{id}.json
+  swagger_schema :QuestionRound do
+    property :id do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :name do
+      key :type, :string
+    end
+    property :url do
+      key :type, :string
+    end
+    property :from_show do
+      key :'$ref', :ShowRound
+    end
+
+  end
 end

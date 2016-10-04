@@ -1,6 +1,12 @@
 class QuestionSwaggerModel
   include Swagger::Blocks
 
+  swagger_schema :Question_response do
+    property :question do
+      key :'$ref', :Question
+    end
+  end
+
   swagger_schema :Question do
     key :required, [:id]
     property :id do
@@ -10,8 +16,18 @@ class QuestionSwaggerModel
     property :body do
       key :type, :string
     end
-    property :tag do
+    property :response do
       key :type, :string
+    end
+    property :value do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :category do
+      key :'$ref', :CategoriesShows
+    end
+    property :from_round do
+      key :'$ref', :QuestionRound
     end
   end
 
