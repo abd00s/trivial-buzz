@@ -2,22 +2,24 @@ class SearchSwaggerModel
   include Swagger::Blocks
 
   swagger_schema :Search do
-    property :id do
+    property :query do
+      key :type, :string
+    end
+    property :category_count do
       key :type, :integer
       key :format, :int64
     end
-    property :body do
-      key :type, :string
-    end
-    property :response do
-      key :type, :string
-    end
-    property :value do
+    property :questions_count do
       key :type, :integer
       key :format, :int64
     end
-    property :round do
-      key :'$ref', :Round
+    property :categories do
+      key :type, :array
+      key :items, {:'$ref' => 'CategoriesShows'}
+    end
+    property :questions do
+      key :type, :array
+      key :items, {:'$ref' => 'QuestionSearches'}
     end
   end
 end

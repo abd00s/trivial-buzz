@@ -2,7 +2,20 @@ class SearchesSwaggerController < Api::QuestionsController
 
   swagger_path '/searches/new.json' do
     operation :get do
-      key :description, 'Search across questions and categories'
+      key :description, 'Search across questions and categories' \
+                        "</br> _Explanation of response attributes_" \
+                        "</br> **query**: Search term" \
+                        "</br> **category_count**: Number of categories matching query" \
+                        "</br> **question_count**: Number of questions matching query" \
+                        "</br> **categories**: Array containing matching categories" \
+                        "</br> #{"&nbsp;"*4} **id**: Category ID" \
+                        "</br> #{"&nbsp;"*4} **name**: Name of category" \
+                        "</br> #{"&nbsp;"*4} **url**: Link to category" \
+                        "</br> **questions**: Array containing matching questions" \
+                        "</br> #{"&nbsp;"*4} **body**: Jeopardy! clue" \
+                        "</br> #{"&nbsp;"*4} **response**: Jeopardy! answer" \
+                        "</br> #{"&nbsp;"*4} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
+                        "</br> #{"&nbsp;"*4} **url**: Link to question"
       key :operationId, 'search'
       key :tags, [
         'search'
