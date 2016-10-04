@@ -51,7 +51,7 @@ class ShowSwaggerModel
     property :air_date do
       key :type, :string
     end
-    property :show_url do
+    property :url do
       key :type, :string
     end
   end
