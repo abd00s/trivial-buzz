@@ -1,3 +1,3 @@
 class CategoryIndexSerializer < CategorySerializer
-  attributes :id, :name, :questions_count, :category_url
+  attributes :id, :name, :questions_count, :url
 end

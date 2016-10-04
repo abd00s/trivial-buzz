@@ -1,9 +1,9 @@
 class RoundSimpleSerializer < ActiveModel::Serializer
-  attributes :id, :name, :round_url
+  attributes :id, :name, :url
 
   has_many :questions
 
-  def round_url
+  def url
     "#{api_round_url(object.id)}.json"
   end
 end
