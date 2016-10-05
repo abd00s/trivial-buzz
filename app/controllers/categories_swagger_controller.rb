@@ -15,6 +15,7 @@ class CategoriesSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **prev_page**: Previous page, if available" \
                         "</br> #{"&nbsp;"*4} **total_pages**: Total number of pages" \
                         "</br> #{"&nbsp;"*4} **total_count**: Total number of Category objects"
+      key :summary, 'Retrieve all categories paginated in 10s'
       key :operationId, 'findCategories'
       key :tags, [
         'category'
@@ -36,7 +37,7 @@ class CategoriesSwaggerController < Api::QuestionsController
         key :format, :int64
       end
       response 200 do
-        key :description, 'question response'
+        key :description, 'categories response'
         schema do
           key :'$ref', :Categories_response
         end
@@ -63,6 +64,7 @@ class CategoriesSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*8} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*8} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
                         "</br> #{"&nbsp;"*8} **url**: Link to question"
+      key :summary, 'Retrieve a single category by ID'
       key :operationId, 'findCategoriesById'
       key :tags, [
         'category'

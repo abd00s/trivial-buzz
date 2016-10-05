@@ -23,6 +23,7 @@ class QuestionsSwaggerController < Api::QuestionsController
 swagger_path '/questions/{id}.json' do
     operation :get do
       key :description, "Returns a single question by ID." + @@description
+      key :summary, 'Retrieve a single question by ID'
       key :operationId, 'findQuestionById'
       key :tags, [
         'question'
@@ -47,6 +48,7 @@ swagger_path '/questions/{id}.json' do
   swagger_path '/questions/random.json' do
     operation :get do
       key :description, 'Returns a random question.' + @@description
+      key :summary, 'Retrieve a random question'
       key :operationId, 'findRandomQuestion'
       key :tags, [
         'question'

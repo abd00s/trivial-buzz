@@ -16,6 +16,7 @@ class SearchesSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*4} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
                         "</br> #{"&nbsp;"*4} **url**: Link to question"
+      key :summary, 'Search across questions and categories'
       key :operationId, 'search'
       key :tags, [
         'search'
