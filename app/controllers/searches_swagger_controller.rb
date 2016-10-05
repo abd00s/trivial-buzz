@@ -33,13 +33,6 @@ class SearchesSwaggerController < Api::QuestionsController
           key :'$ref', :Search
         end
       end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
-        end
-      end
     end
   end
-
 end

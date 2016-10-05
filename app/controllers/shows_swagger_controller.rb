@@ -58,12 +58,6 @@ class ShowsSwaggerController < Api::QuestionsController
           key :'$ref', :Shows_response
         end
       end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
-        end
-      end
     end
   end
 
@@ -110,12 +104,6 @@ class ShowsSwaggerController < Api::QuestionsController
         key :description, 'show response'
         schema do
           key :'$ref', :Show_response
-        end
-      end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
         end
       end
     end

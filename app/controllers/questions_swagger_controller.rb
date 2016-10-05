@@ -41,12 +41,6 @@ swagger_path '/questions/{id}.json' do
           key :'$ref', :Question_response
         end
       end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
-        end
-      end
     end
   end
 
@@ -75,12 +69,6 @@ swagger_path '/questions/{id}.json' do
         key :description, 'question response'
         schema do
           key :'$ref', :Question_response
-        end
-      end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
         end
       end
     end

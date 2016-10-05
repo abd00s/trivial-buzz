@@ -41,12 +41,6 @@ class CategoriesSwaggerController < Api::QuestionsController
           key :'$ref', :Categories_response
         end
       end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
-        end
-      end
     end
   end
 
@@ -85,12 +79,6 @@ class CategoriesSwaggerController < Api::QuestionsController
         key :description, 'question response'
         schema do
           key :'$ref', :Category_response
-        end
-      end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
         end
       end
     end

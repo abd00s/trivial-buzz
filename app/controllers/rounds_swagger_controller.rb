@@ -45,12 +45,6 @@ class RoundsSwaggerController < Api::QuestionsController
           key :'$ref', :Round_response
         end
       end
-      response :default do
-        key :description, 'unexpected error'
-        schema do
-          key :'$ref', :ErrorModel
-        end
-      end
     end
   end
 
