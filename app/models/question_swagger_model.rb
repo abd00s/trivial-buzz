@@ -1,6 +1,8 @@
 class QuestionSwaggerModel
   include Swagger::Blocks
 
+  # Used for /questions/{id}.json & /questions/random.json
+
   swagger_schema :Question_response do
     property :question do
       key :'$ref', :Question
