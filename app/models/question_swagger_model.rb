@@ -82,4 +82,25 @@ class QuestionSwaggerModel
       key :type, :string
     end
   end
+
+  # For use in /category/{id}.json
+  swagger_schema :QuestionCategory do
+    property :id do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :body do
+      key :type, :string
+    end
+    property :response do
+      key :type, :string
+    end
+    property :value do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :url do
+      key :type, :string
+    end
+  end
 end

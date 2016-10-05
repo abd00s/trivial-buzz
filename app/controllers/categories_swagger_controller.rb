@@ -52,7 +52,23 @@ class CategoriesSwaggerController < Api::QuestionsController
 
   swagger_path '/categories/{id}.json' do
     operation :get do
-      key :description, 'Fetch category by ID.'
+      key :description, 'Fetch category by ID.' \
+                        "</br> **category**" \
+                        "</br> #{"&nbsp;"*4} **id**: Category ID" \
+                        "</br> #{"&nbsp;"*4} **name**: Category name" \
+                        "</br> #{"&nbsp;"*4} **questions_count**: Number of questions having this category" \
+                        "</br> #{"&nbsp;"*8} Note that this only includes shows revealed during the show" \
+                        "</br> #{"&nbsp;"*4} **shows**: Array of shows in which this category appeared" \
+                        "</br> #{"&nbsp;"*8} **id**: Show ID" \
+                        "</br> #{"&nbsp;"*8} **show_number**: Jeopardy! show number" \
+                        "</br> #{"&nbsp;"*8} **air_date**: Date the show aired YYYY-DD-MM" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to show" \
+                        "</br> #{"&nbsp;"*4} **questions**: Array of questions with this category" \
+                        "</br> #{"&nbsp;"*8} **id**: Question ID" \
+                        "</br> #{"&nbsp;"*8} **body**: Jeopardy! clue" \
+                        "</br> #{"&nbsp;"*8} **response**: Jeopardy! answer" \
+                        "</br> #{"&nbsp;"*8} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
+                        "</br> #{"&nbsp;"*8} **url**: Link to question"
       key :operationId, 'findCategoriesById'
       key :tags, [
         'category'
@@ -68,7 +84,7 @@ class CategoriesSwaggerController < Api::QuestionsController
       response 200 do
         key :description, 'question response'
         schema do
-          key :'$ref', :Categories
+          key :'$ref', :Category_response
         end
       end
       response :default do

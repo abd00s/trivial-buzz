@@ -31,6 +31,36 @@ class CategorySwaggerModel
     end
   end
 
+  # Used for /category/{id}.json
+  swagger_schema :Category_response do
+    property :category do
+      key :'$ref', :Category
+    end
+  end
+
+  # Used to set up Category_reposnse
+  swagger_schema :Category do
+    property :id do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :name do
+      key :type, :string
+    end
+    property :questions_count do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :shows do
+      key :type, :array
+      key :items, {:'$ref' => 'ShowRound'}
+    end
+    property :questions do
+      key :type, :array
+      key :items, {:'$ref' => 'QuestionCategory'}
+    end
+  end
+
   # Used for /questions/{id}.json
   # /questions/random.json
   # /rounds/{id}.json
