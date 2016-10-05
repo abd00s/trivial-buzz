@@ -1,7 +1,20 @@
 class CategorySwaggerModel
   include Swagger::Blocks
 
-  swagger_schema :Categories do
+
+  # Used for /categories.json
+  swagger_schema :Categories_response do
+    property :categories do
+      key :type, :array
+      key :items, {:'$ref' => 'CategoriesIndex'}
+    end
+    property :meta do
+      key :'$ref', :MetaModel
+    end
+  end
+
+  # Used to set up Categories_response
+  swagger_schema :CategoriesIndex do
     property :id do
       key :type, :integer
       key :format, :int64
@@ -18,6 +31,12 @@ class CategorySwaggerModel
     end
   end
 
+  # Used for /questions/{id}.json
+  # /questions/random.json
+  # /rounds/{id}.json
+  # /searches/new.json
+  # /shows.json
+  # /shows/{id}.json
   swagger_schema :CategoriesShows do
     property :id do
       key :type, :integer
