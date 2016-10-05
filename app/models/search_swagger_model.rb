@@ -1,6 +1,7 @@
 class SearchSwaggerModel
   include Swagger::Blocks
 
+  # Used for /searches/new.json
   swagger_schema :Search do
     property :query do
       key :type, :string

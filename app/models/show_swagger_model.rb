@@ -1,6 +1,7 @@
 class ShowSwaggerModel
   include Swagger::Blocks
 
+  # Used for /shows.json
   swagger_schema :Shows_response do
     property :shows do
       key :type, :array
@@ -11,12 +12,14 @@ class ShowSwaggerModel
     end
   end
 
+  # Used for /shows/{id}.json
   swagger_schema :Show_response do
     property :show do
       key :'$ref', :Shows
     end
   end
 
+  # Used to set up Shows_response
   swagger_schema :Shows do
     property :id do
       key :type, :integer
@@ -39,6 +42,7 @@ class ShowSwaggerModel
     end
   end
 
+  # Used for /category/{id}.json
   swagger_schema :ShowRound do
     property :id do
       key :type, :integer

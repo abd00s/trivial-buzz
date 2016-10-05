@@ -1,13 +1,14 @@
 class RoundSwaggerModel
   include Swagger::Blocks
 
+  # Used for /round/{id}.json
   swagger_schema :Round_response do
     property :round do
       key :'$ref', :Round
     end
-
   end
 
+  # Used to set up Round_response
   swagger_schema :Round do
     property :id do
       key :type, :integer
@@ -29,6 +30,7 @@ class RoundSwaggerModel
     end
   end
 
+  # Used for /shows/{id}.json
   swagger_schema :RoundsShows do
     property :id do
       key :type, :integer
@@ -61,6 +63,5 @@ class RoundSwaggerModel
     property :from_show do
       key :'$ref', :ShowRound
     end
-
   end
 end

@@ -1,6 +1,8 @@
 class MetaSwaggerModel
   include Swagger::Blocks
 
+  # Used for /categories.json
+  # /shows.json
   swagger_schema :MetaModel do
     property :current_page do
       key :type, :integer
