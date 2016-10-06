@@ -30,7 +30,7 @@ class Api::CategoriesController < ApiController
   end
 
   private
-    def category_params
-      params.permit(:id)
-    end
+  def category_params
+    params.permit(:id)
+  end
 end

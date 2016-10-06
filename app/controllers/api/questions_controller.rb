@@ -54,7 +54,7 @@ class Api::QuestionsController < ApiController
   end
 
   private
-    def question_params
-      params.permit(:id)
-    end
+  def question_params
+    params.permit(:id)
+  end
 end

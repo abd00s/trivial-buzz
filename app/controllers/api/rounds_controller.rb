@@ -10,7 +10,7 @@ class Api::RoundsController < ApiController
   end
 
   private
-    def round_params
-      params.permit(:id)
-    end
+  def round_params
+    params.permit(:id)
+  end
 end

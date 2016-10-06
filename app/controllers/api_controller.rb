@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   include Swagger::Blocks
+  rescue_from StandardError, with: :something_went_wrong
 
   respond_to :json
 
@@ -15,5 +16,9 @@ class ApiController < ApplicationController
 
   def display_error(message)
     render json: {Error: "#{message}"}
+  end
+
+  def something_went_wrong
+    display_error("Something went wrong, please try again.")
   end
 end
