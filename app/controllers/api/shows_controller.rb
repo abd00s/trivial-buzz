@@ -11,7 +11,7 @@ class Api::ShowsController < ApiController
           {}
         end
       else
-        display_error("Invalid sorting order; Valid values are 'old' or 'recent'") and return
+        display_error(400,"Invalid sorting order; Valid values are 'old' or 'recent'") and return
       end
     end
 
@@ -27,7 +27,7 @@ class Api::ShowsController < ApiController
       begin
         Show.includes(rounds: [{questions: :category}]).find(show_params[:id])
       rescue ActiveRecord::RecordNotFound
-        display_error("There is no show with ID #{show_params[:id]}") and return
+        display_error(404,"There is no show with ID #{show_params[:id]}") and return
       end
     respond_with @show, serializer: ShowSerializer
   end

@@ -4,7 +4,7 @@ class Api::RoundsController < ApiController
       begin
         Round.find(round_params[:id])
       rescue ActiveRecord::RecordNotFound
-        display_error("There is no round with ID #{round_params[:id]}") and return
+        display_error(404,"There is no round with ID #{round_params[:id]}") and return
       end
     respond_with @round, serializer: RoundSerializer
   end

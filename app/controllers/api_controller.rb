@@ -14,11 +14,15 @@ class ApiController < ApplicationController
     }
   end
 
-  def display_error(message)
-    render json: {Error: "#{message}"}
+  def display_error(status, message)
+    render json: {"error": {
+      "status": "#{status}",
+      "message": "#{message}"
+      }
+    }
   end
 
   def something_went_wrong
-    display_error("Something went wrong, please try again.")
+    display_error(500,"Something went wrong, please try again.")
   end
 end

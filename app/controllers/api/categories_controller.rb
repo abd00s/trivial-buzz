@@ -4,8 +4,8 @@ class Api::CategoriesController < ApiController
       if params[:popular].present?
         limit = params[:popular].to_i
         if limit <= 0
-          render json: {Error: "#{params[:popular]} is an invalid count limit. " \
-          + "Proper usage: /categories.json?popular=5 to return 5 most popular categories"} \
+          display_error(400, "#{params[:popular]} is an invalid count limit. " \
+          + "Proper usage: /categories.json?popular=5 to return 5 most popular categories")\
           and return
         end
         categories_array = Category.most_common(limit).to_a
@@ -24,7 +24,7 @@ class Api::CategoriesController < ApiController
       begin
         Category.find(category_params[:id])
       rescue ActiveRecord::RecordNotFound
-        display_error("There is no category with ID #{category_params[:id]}") and return
+        display_error(404, "There is no category with ID #{category_params[:id]}") and return
       end
     respond_with @category, serializer: CategoryDetailSerializer, root: :category
   end

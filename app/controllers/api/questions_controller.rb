@@ -4,7 +4,7 @@ class Api::QuestionsController < ApiController
       begin
         Question.find(question_params[:id])
       rescue ActiveRecord::RecordNotFound
-        display_error("There is no question with ID #{question_params[:id]}") and return
+        display_error(404, "There is no question with ID #{question_params[:id]}") and return
       end
     respond_with @question, serializer: QuestionOnlySerializer, root: :question
   end
@@ -21,7 +21,7 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:newer_than])
         rescue ArgumentError, TypeError
-          display_error("Invalid lower bound, format should be YYYY-DD-MM") and return
+          display_error(400, "Invalid lower bound, newer_than format should be YYYY-DD-MM") and return
         end
     end
 
@@ -30,12 +30,12 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:older_than])
         rescue ArgumentError, TypeError
-          display_error("Invalid upper bound, format should be YYYY-DD-MM") and return
+          display_error(400, "Invalid upper bound, older_than format should be YYYY-DD-MM") and return
         end
     end
 
     if minimum.present? && maximum.present? && minimum > maximum
-      display_error("Invalid range; minimum is greater than maximum.") and return
+      display_error(400, "Invalid range; minimum is greater than maximum.") and return
     end
 
     # We make use of chaining scopes defined on Question.
@@ -48,7 +48,7 @@ class Api::QuestionsController < ApiController
     else
       oldest = Show.order(:air_date).first.air_date
       newest = Show.order(air_date: :desc).first.air_date
-      display_error("No questions in selected range; no shows aired in range or" \
+      display_error(404, "No questions in selected range; no shows aired in range or" \
         + "bounds are outside of valid range #{oldest} to #{newest}") and return
     end
   end
