@@ -20,7 +20,17 @@ class Api::CategoriesController < ApiController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category =
+      begin
+        Category.find(category_params[:id])
+      rescue ActiveRecord::RecordNotFound
+        display_error("There is no category with ID #{category_params[:id]}") and return
+      end
     respond_with @category, serializer: CategoryDetailSerializer, root: :category
   end
+
+  private
+    def category_params
+      params.permit(:id)
+    end
 end
