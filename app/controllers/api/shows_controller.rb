@@ -17,7 +17,17 @@ class Api::ShowsController < ApiController
   end
 
   def show
-    @show = Show.includes(rounds: [{questions: :category}]).find(params[:id])
+    @show =
+      begin
+        Show.includes(rounds: [{questions: :category}]).find(show_params[:id])
+      rescue ActiveRecord::RecordNotFound
+        display_error("There is no show with ID #{show_params[:id]}") and return
+      end
     respond_with @show, serializer: ShowSerializer
+  end
+
+  private
+  def show_params
+    params.permit(:id)
   end
 end
