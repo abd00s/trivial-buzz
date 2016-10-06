@@ -1,7 +1,7 @@
 class Api::ShowsController < ApiController
   def index
     if params[:chrono_sort].present?
-     if ["old", "recent"].include?(params[:chrono_sort])
+     if ["old", "recent"].include?(params[:chrono_sort].downcase)
       sorting_order =
         if params[:chrono_sort] == "old"
           {air_date: :asc}
