@@ -3,7 +3,7 @@ class Api::CategoriesController < ApiController
     @categories =
       if params[:popular].present?
         limit = params[:popular].to_i
-        if limit == 0
+        if limit <= 0
           render json: {Error: "#{params[:popular]} is an invalid count limit. " \
           + "Proper usage: /categories.json?popular=5 to return 5 most popular categories"} \
           and return
