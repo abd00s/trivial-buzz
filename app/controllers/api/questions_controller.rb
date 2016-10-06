@@ -47,9 +47,4 @@ class Api::QuestionsController < ApiController
         + "bounds are outside of valid range #{oldest} to #{newest}") and return
     end
   end
-
-  private
-  def display_error(message)
-    render json: {Error: "#{message}"}
-  end
 end

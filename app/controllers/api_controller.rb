@@ -13,4 +13,7 @@ class ApiController < ApplicationController
     }
   end
 
+  def display_error(message)
+    render json: {Error: "#{message}"}
+  end
 end
