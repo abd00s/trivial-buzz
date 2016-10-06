@@ -1,13 +1,19 @@
 class Api::ShowsController < ApiController
   def index
-    sorting_order =
-      if params[:chrono_sort] == "old"
-        {air_date: :asc}
-      elsif params[:chrono_sort] == "recent"
-        {air_date: :desc}
+    if params[:chrono_sort].present?
+     if ["old", "recent"].include?(params[:chrono_sort])
+      sorting_order =
+        if params[:chrono_sort] == "old"
+          {air_date: :asc}
+        elsif params[:chrono_sort] == "recent"
+          {air_date: :desc}
+        else
+          {}
+        end
       else
-        {}
+        display_error("Invalid sorting order; Valid values are 'old' or 'recent'") and return
       end
+    end
 
     @shows = Show.order(sorting_order)
       .includes(rounds: [{questions: :category}])
