@@ -1,6 +1,11 @@
 class Api::QuestionsController < ApiController
   def show
-    @question = Question.find(params[:id])
+    @question =
+      begin
+        Question.find(question_params[:id])
+      rescue ActiveRecord::RecordNotFound
+        display_error("There is no question with ID #{question_params[:id]}") and return
+      end
     respond_with @question, serializer: QuestionOnlySerializer, root: :question
   end
 
@@ -47,4 +52,9 @@ class Api::QuestionsController < ApiController
         + "bounds are outside of valid range #{oldest} to #{newest}") and return
     end
   end
+
+  private
+    def question_params
+      params.permit(:id)
+    end
 end
