@@ -5,7 +5,7 @@ class Search < ActiveRecord::Base
 
   belongs_to :searchable, polymorphic: true
 
-  # self.table_name = 'searches'
+  self.table_name = 'searches'
 
   def results
     if @query.present?
@@ -13,5 +13,10 @@ class Search < ActiveRecord::Base
     else
       Search.none
     end
+  end
+
+  def self.refresh_materialized_view
+    connection = ActiveRecord::Base.connection
+    connection.execute("REFRESH MATERIALIZED VIEW #{table_name}")
   end
 end
