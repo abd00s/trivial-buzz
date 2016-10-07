@@ -7,6 +7,7 @@ json.categories @category_results do |category|
   json.url  "#{api_category_url(category.id)}.json"
 end
 json.questions @question_results do |question|
+  json.category question.category.name
   json.body question.body
   json.response question.response
   json.value question.value
