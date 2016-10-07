@@ -22,7 +22,9 @@ class ApiController < ApplicationController
     }
   end
 
-  def something_went_wrong
+  def something_went_wrong(exception)
     display_error(500,"Something went wrong, please try again.")
+    puts "There was an error on this request:"
+    puts exception.message
   end
 end
