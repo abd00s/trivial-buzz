@@ -4,7 +4,8 @@ RSpec.describe Question, type: :request do
   describe "Endpoint: /questions/{id}.json" do
     context "with a valid ID" do
       it "returns a question object with all its relevant data" do
-        get "/api/v1/questions/1.json"
+        question_id = Question.first.id
+        get "/api/v1/questions/#{question_id}.json"
 
         expect(response).to be_success
 
