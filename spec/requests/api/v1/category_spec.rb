@@ -104,7 +104,7 @@ RSpec.describe Category, type: :request do
     end
 
     context "with invalid ID" do
-      it "returns an error object with a 400 status" do
+      it "returns an error object with a 404 status" do
         get "/api/v1/categories/X.json"
 
         expect(response_body_as_json).to have_key("error")
