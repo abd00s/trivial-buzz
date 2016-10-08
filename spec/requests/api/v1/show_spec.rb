@@ -62,33 +62,43 @@ RSpec.describe Show, type: :request do
         expect(response_body_as_json["error"]["message"]).to match(/Invalid sorting order/)
       end
     end
-  # end
+  end
 
-#   describe "Endpoint: /shows/{id}.json" do
-#     context "with a valid ID" do
-#       it "returns a show object with all its relevant data" do
+  describe "Endpoint: /shows/{id}.json" do
+    context "with a valid ID" do
+      it "returns a show object with all its relevant data" do
+        show_id = Show.first.id
+        get "/api/v1/shows/#{show_id}.json"
 
-#       end
-#     end
+        expect(response).to be_success
 
-#     context "with a valid ID but no matching record" do
-#       it "returns an error object with a 404 status" do
+        expect(response_body_as_json).to have_key("show")
 
-#       end
+        expect(response_body_as_json["show"]).to \
+          include("id", "show_number", "air_date", "categories", "rounds")
 
-#       it "returns an error object with a message describing absence of matching record" do
+        expect(response_body_as_json["show"]["categories"]).to be_an(Array)
 
-#       end
-#     end
+        expect(response_body_as_json["show"]["rounds"]).to be_an(Array)
+      end
+    end
 
-#     context "with invalid ID" do
-#       it "returns an error object with a 400 status" do
+    context "with a valid ID but no matching record" do
+      it "returns an error object with a 404 status" do
+        invalid_id = Show.count + 1
+        get "/api/v1/shows/#{invalid_id}.json"
 
-#       end
+        expect(response_body_as_json).to have_key("error")
 
-#       it "returns an error object with a message describing bad request input" do
+        expect(response_body_as_json["error"]["status"]).to eq("404")
+      end
 
-#       end
-#     end
+      it "returns an error object with a message describing absence of matching record" do
+        invalid_id = Show.count + 1
+        get "/api/v1/shows/#{invalid_id}.json"
+
+        expect(response_body_as_json["error"]["message"]).to match(/no show with ID/)
+      end
+    end
   end
 end
