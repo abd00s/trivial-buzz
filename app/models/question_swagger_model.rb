@@ -68,6 +68,9 @@ class QuestionSwaggerModel
 
   # For use in /searches/new.json
   swagger_schema :QuestionSearches do
+    property :category do
+      key :type, :string
+    end
     property :body do
       key :type, :string
     end

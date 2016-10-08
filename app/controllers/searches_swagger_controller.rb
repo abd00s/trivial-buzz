@@ -12,6 +12,7 @@ class SearchesSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **name**: Name of category" \
                         "</br> #{"&nbsp;"*4} **url**: Link to category" \
                         "</br> **questions**: Array containing matching questions" \
+                        "</br> #{"&nbsp;"*4} **category**: Category of the question" \
                         "</br> #{"&nbsp;"*4} **body**: Jeopardy! clue" \
                         "</br> #{"&nbsp;"*4} **response**: Jeopardy! answer" \
                         "</br> #{"&nbsp;"*4} **value**: Question dollar value; Final Jeopardy questions have 0 value" \
