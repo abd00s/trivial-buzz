@@ -10,8 +10,8 @@ class Api::SearchesController < ApiController
                       if ["Question","Category"].include?(params[:only].capitalize)
                         result.class.to_s == params[:only].capitalize
                       else
-                        display_error(400, "#{params[:only]} is not a valid filter. \
-                          Valid filters are Question and Category.") and return
+                        display_error(400, "#{params[:only]} is not a valid filter. " \
+                          + "Valid filters are Question and Category.") and return
                       end                                                             # Render error if param in not
                                                                                       # either of Question or Category
                     else
