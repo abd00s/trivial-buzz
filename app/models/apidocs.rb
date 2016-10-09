@@ -5,11 +5,11 @@ class Apidocs < ActiveRecord::Base
     info do
       key :version, '1.0.0'
       key :title, 'Jeopardy! API'
-      key :description, 'JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012.'
+      key :description, "JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012. This project is unaffiliated with the Jeopardy! gameshow and claims no ownership of the questions. This is a project developed in my free time using Ruby on Rails on the backend and Swagger for documentation. An API key is not required. See more at https://github.com/abd00s/Jeopardy-API"
 
       contact do
         key :name, 'Abdullah Pharaon'
-        key :url, 'https://github.com/abd00s/Jeopardy-API'
+        key :url, 'http://abdullahonline.co/'
       end
     end
     tag do
