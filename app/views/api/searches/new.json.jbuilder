@@ -18,9 +18,13 @@ json.results @results do |result|
   else
     json.result_type "question"
     json.id result.id
-    json.category result.category.name
     json.body result.body
     json.response result.response
+    json.category do
+      json.id result.category.id
+      json.name result.category.name
+      json.url "#{api_category_url(result.category.id)}.json"
+    end
     json.value result.value
     json.url  "#{api_question_url(result.id)}.json"
   end
