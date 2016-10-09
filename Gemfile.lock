@@ -38,8 +38,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    analytics-ruby (2.2.2)
-      commander (~> 4.4)
     arel (6.0.3)
     awesome_print (1.7.0)
     better_errors (2.1.1)
@@ -58,8 +56,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    commander (4.4.0)
-      highline (~> 1.7.2)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
@@ -67,7 +63,6 @@ GEM
     execjs (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    highline (1.7.8)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -90,6 +85,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    mixpanel-ruby (2.2.0)
     multi_json (1.12.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -194,7 +190,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (= 0.9.5)
-  analytics-ruby
   awesome_print
   better_errors
   binding_of_caller
@@ -203,6 +198,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mixpanel-ruby
   pg
   pry-rails
   rails (= 4.2.4)

@@ -63,6 +63,4 @@ gem 'swagger-blocks'
 
 gem 'swagger_engine'#, :path => "~/Documents/Programming/swagger_engine" #, :git => "git://github.com/abd00s/swagger_engine.git", :ref => '79d93fe6e74bb3386d7ba3c180ba233f839b24fa'
 
-gem 'analytics-ruby', :require => "segment"
-
-
+gem 'mixpanel-ruby'

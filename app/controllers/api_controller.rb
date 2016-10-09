@@ -2,6 +2,8 @@ class ApiController < ApplicationController
   include Swagger::Blocks
   rescue_from StandardError, with: :something_went_wrong
 
+  # after_action :track_analytics
+
   respond_to :json
 
   def pagination_dict(object)
@@ -26,5 +28,15 @@ class ApiController < ApplicationController
     display_error(500,"Something went wrong, please try again.")
     puts "There was an error on this request:"
     puts exception.message
+  end
+
+  def track_analytics
+    Tracker.track(
+      request.remote_ip,
+      "#{controller_name}##{action_name} visited",
+      params
+    )
+  rescue
+    return
   end
 end
