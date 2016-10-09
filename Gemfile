@@ -53,7 +53,7 @@ end
 # For controller-level `respond_to'
 gem 'responders', '~> 2.0'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '0.9.5'
 
 gem 'kaminari'
 
@@ -61,5 +61,6 @@ gem 'textacular', '~> 3.0'
 
 gem 'swagger-blocks'
 
-gem 'swagger_engine'
+gem 'swagger_engine'#, :path => "~/Documents/Programming/swagger_engine" #, :git => "git://github.com/abd00s/swagger_engine.git", :ref => '79d93fe6e74bb3386d7ba3c180ba233f839b24fa'
+
 
