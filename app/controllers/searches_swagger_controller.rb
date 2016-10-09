@@ -1,6 +1,6 @@
 class SearchesSwaggerController < Api::QuestionsController
 
-  swagger_path '/searches/new.json' do
+  swagger_path '/search.json' do
     operation :get do
       key :description, 'Search across questions and categories' \
                         "</br> _Explanation of response attributes_" \

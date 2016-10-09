@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'questions/random' => 'questions#random'
       resources :questions, only: :show
       resources :categories, only: [:index, :show]
-      get 'searches/new'
+      get 'search' => 'searches#new'
     end
   end
   mount SwaggerEngine::Engine, at: "/"

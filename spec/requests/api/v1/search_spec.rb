@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Search, type: :request do
-  describe "Endpoint: /searches/new.json?query=" do
+  describe "Endpoint: /search.json?query=" do
     context "with query param" do
       it "returns a meta object describing search results and pagination info" do
-        get "/api/v1/searches/new.json?query=duck"
+        get "/api/v1/search.json?query=duck"
 
         expect(response).to be_success
 
@@ -16,7 +16,7 @@ RSpec.describe Search, type: :request do
       end
 
       it "returns a results array containing questions and categories matching search query" do
-        get "/api/v1/searches/new.json?query=duck"
+        get "/api/v1/search.json?query=duck"
 
         expect(response).to be_success
 
@@ -38,7 +38,7 @@ RSpec.describe Search, type: :request do
 
     context "with a limiting param passed to [:only]" do
       it "returns only matching questions if param only=question" do
-        get "/api/v1/searches/new.json?query=duck&only=question"
+        get "/api/v1/search.json?query=duck&only=question"
 
         expect(response).to be_success
 
@@ -48,7 +48,7 @@ RSpec.describe Search, type: :request do
       end
 
       it "returns only matching categories if param only=category" do
-        get "/api/v1/searches/new.json?query=duck&only=category"
+        get "/api/v1/search.json?query=duck&only=category"
 
         expect(response).to be_success
 
@@ -58,7 +58,7 @@ RSpec.describe Search, type: :request do
       end
 
       it "returns an error object if limiting param is not recognized; only=responses" do
-        get "/api/v1/searches/new.json?query=duck&only=responses"
+        get "/api/v1/search.json?query=duck&only=responses"
 
         expect(response_body_as_json).to have_key("error")
 
