@@ -16,4 +16,4 @@
 /lib/seeds/mini.json
 
 # Ignore secrets
-/config/secrets.yml
+#/config/secrets.yml
