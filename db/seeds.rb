@@ -3,17 +3,17 @@ parsed_json = JSON.parse(json_text)
 count = parsed_json.size
 parsed_json.each do |question|
 
-  s = Show.find_or_create_by(show_number: question["show_number"].to_i) do |show|
-    show.air_date = Date.parse(question["air_date"])
-  end
-
-  r = Round.find_or_create_by(name: question["round"], show: s)
-
-  c = Category.find_or_create_by(name: question["category"].downcase)
-
   if Question.find_by(body: question["question"]).present?
     next
   else
+    s = Show.find_or_create_by(show_number: question["show_number"].to_i) do |show|
+      show.air_date = Date.parse(question["air_date"])
+    end
+
+    r = Round.find_or_create_by(name: question["round"], show: s)
+
+    c = Category.find_or_create_by(name: question["category"].downcase)
+
     q = Question.new
     q.body = question["question"]
     q.response = question["answer"]
