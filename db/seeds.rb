@@ -11,17 +11,21 @@ parsed_json.each do |question|
 
   c = Category.find_or_create_by(name: question["category"].downcase)
 
-  q = Question.new
-  q.body = question["question"]
-  q.response = question["answer"]
-  q.value = if question["value"]
-    question["value"].gsub(/\D/,'').to_i
+  if Question.find_by(body: question["question"]).present?
+    next
   else
-    0
+    q = Question.new
+    q.body = question["question"]
+    q.response = question["answer"]
+    q.value = if question["value"]
+      question["value"].gsub(/\D/,'').to_i
+    else
+      0
+    end
+    q.category = c
+    q.round = r
+    q.save
   end
-  q.category = c
-  q.round = r
-  q.save
 
   puts count
   count -= 1
