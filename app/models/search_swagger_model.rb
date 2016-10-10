@@ -50,11 +50,11 @@ class SearchSwaggerModel
     property :query do
       key :type, :string
     end
-    property :current_page_category_count do
+    property :category_count do
       key :type, :integer
       key :format, :int64
     end
-    property :current_page_questions_count do
+    property :questions_count do
       key :type, :integer
       key :format, :int64
     end

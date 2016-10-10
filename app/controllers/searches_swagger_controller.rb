@@ -6,8 +6,8 @@ class SearchesSwaggerController < Api::QuestionsController
                         "</br> _Explanation of response attributes_" \
                         "</br> **meta**: Object explaining results and pages" \
                         "</br> #{"&nbsp;"*4} **query**: Search term" \
-                        "</br> #{"&nbsp;"*4} **current_page_category_count**: Number of categories matching query on this page" \
-                        "</br> #{"&nbsp;"*4} **current_page_question_count**: Number of questions matching query on this page" \
+                        "</br> #{"&nbsp;"*4} **category_count**: Number of categories matching query" \
+                        "</br> #{"&nbsp;"*4} **question_count**: Number of questions matching query" \
                         "</br> #{"&nbsp;"*4} **current_page**: Current page" \
                         "</br> #{"&nbsp;"*4} **next_page**: Next page, if available" \
                         "</br> #{"&nbsp;"*4} **prev_page**: Previous page, if available" \

@@ -11,7 +11,7 @@ RSpec.describe Search, type: :request do
         expect(response_body_as_json).to have_key("meta")
 
         expect(response_body_as_json["meta"]).to \
-          include("query", "current_page_category_count", "current_page_question_count", \
+          include("query", "category_count", "question_count", \
             "current_page", "next_page", "prev_page", "total_pages", "total_count")
       end
 
