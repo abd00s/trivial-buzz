@@ -14,3 +14,6 @@
 
 # Ignore Seed questions
 /lib/seeds/mini.json
+
+# Ignore secrets
+/config/secrets.yml

@@ -1,1 +1,1 @@
-Tracker = Mixpanel::Tracker.new("48923ecd653603c9ecaa024a9caf049c")
+Tracker = Mixpanel::Tracker.new(Rails.application.secrets.mixpanel)
