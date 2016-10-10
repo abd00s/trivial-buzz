@@ -4,8 +4,8 @@ class Apidocs < ActiveRecord::Base
     key :swagger, '2.0'
     info do
       key :version, '1.0.0'
-      key :title, 'Jeopardy! API'
-      key :description, "JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012. This project is unaffiliated with the Jeopardy! gameshow and claims no ownership of the questions. This is a project developed in my free time using Ruby on Rails on the backend and Swagger for documentation. An API key is not required. See more at https://github.com/abd00s/Jeopardy-API"
+      key :title, 'Trivial Buzz'
+      key :description, "JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012. This project is unaffiliated with the Jeopardy! gameshow and claims no ownership of the questions. Questions were obtained by crawling www.j-archive.com . This is a project developed in my free time using Ruby on Rails on the backend and Swagger for documentation. An API key is not required. See more at https://github.com/abd00s/trivial-buzz"
 
       contact do
         key :name, 'Abdullah Pharaon'
