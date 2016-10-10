@@ -64,3 +64,5 @@ gem 'swagger-blocks'
 gem 'swagger_engine'
 
 gem 'mixpanel-ruby'
+
+gem 'rails_12factor', group: :production
