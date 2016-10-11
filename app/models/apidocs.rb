@@ -18,8 +18,8 @@ class Apidocs < ActiveRecord::Base
         key :url, 'https://swagger.io'
       end
     end
-    key :host, 'trivial-buzz.herokuapp.com/'
-    key :basePath, 'api/v1'
+    key :host, 'trivial-buzz.herokuapp.com'
+    key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
   end
