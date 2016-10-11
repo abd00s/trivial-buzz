@@ -1,8 +1,8 @@
 json_text = File.read(Rails.root.join('lib', 'seeds', 'questions.json'))
 parsed_json = JSON.parse(json_text)
-count = parsed_json.size
 
 number_of_questions_already_seeded = Question.count - 1
+count = parsed_json.size - number_of_questions_already_seeded
 
 for i in number_of_questions_already_seeded...parsed_json.size
 # parsed_json.each do |question|
