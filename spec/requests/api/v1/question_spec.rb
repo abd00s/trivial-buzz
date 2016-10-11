@@ -218,5 +218,182 @@ RSpec.describe Question, type: :request do
         expect(response_body_as_json["error"]["message"]).to match(/Invalid range/)
       end
     end
+
+    context "with valid param `?value_greater=`" do
+      it "returns a question object with value greater than or equal to param with all its relevant data" do
+        low_bound = 1000
+
+        get "/api/v1/questions/random.json?value_greater=#{low_bound}"
+
+        expect(response).to be_success
+
+        response_question_value = response_body_as_json["question"]["value"]
+
+        expect(response_question_value).to be >= low_bound
+      end
+    end
+
+    context "with valid param `?value_greater=` but no matching record" do
+      it "returns an error object with a 404 status" do
+        low_bound = Question.order(value: :desc).first.value + 1
+
+        get "/api/v1/questions/random.json?value_greater=#{low_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("404")
+      end
+
+      it "returns an error object with a message describing lack of record with such properties" do
+        low_bound = Question.order(value: :desc).first.value + 1
+
+        get "/api/v1/questions/random.json?value_greater=#{low_bound}"
+
+        expect(response_body_as_json["error"]["message"]).to match(/no questions with such value/)
+      end
+    end
+
+    context "with valid param `?value_less=`" do
+      it "returns a question object with value greater than or equal to param with all its relevant data" do
+        upper_bound = 1000
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}"
+
+        expect(response).to be_success
+
+        response_question_value = response_body_as_json["question"]["value"]
+
+        expect(response_question_value).to be <= upper_bound
+      end
+    end
+
+    context "with valid param `?value_less=` but no matching record" do
+      it "returns an error object with a 404 status" do
+        upper_bound = Question.where("value > ?", 0).order(:value).first.value - 1
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("404")
+      end
+
+      it "returns an error object with a message describing lack of record with such properties" do
+        upper_bound = Question.where("value > ?", 0).order(:value).first.value - 1
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}"
+
+        expect(response_body_as_json["error"]["message"]).to match(/no questions with such value/)
+      end
+    end
+
+    context "with valid param range value `?value_less=` `&value_greater=`" do
+      it "returns a question object with value in range with all its relevant data if low bound is less than upper bound" do
+        low_bound = 1000
+        upper_bound = 3000
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}&value_greater=#{low_bound}"
+
+        response_question_value = response_body_as_json["question"]["value"]
+
+        expect(response_question_value).to be_between(low_bound, upper_bound)
+      end
+
+      it "returns an error object with a message describing bad range if low bound is greater than upper bound" do
+        low_bound = 3000
+        upper_bound = 1000
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}&value_greater=#{low_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("400")
+
+        expect(response_body_as_json["error"]["message"]).to match(/Invalid range/)
+      end
+
+      it "returns an error object with a 404 status and message describing lack of matches if no questions in range were found" do
+        low_bound = Question.order(value: :desc).first.value + 1
+        upper_bound = Question.order(value: :desc).first.value + 10
+
+        get "/api/v1/questions/random.json?value_less=#{upper_bound}&value_greater=#{low_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("404")
+
+        expect(response_body_as_json["error"]["message"]).to match(/No questions in selected range/)
+      end
+    end
+
+    context "with valid param `?value_equals=`" do
+      it "returns a question object with value equal to param with all its relevant data" do
+        value = 1000
+
+        get "/api/v1/questions/random.json?value_equals=#{value}"
+
+        expect(response).to be_success
+
+        response_question_value = response_body_as_json["question"]["value"]
+
+        expect(response_question_value).to eq(value)
+      end
+    end
+
+    context "with valid param `?value_equals=` but no matching record" do
+      it "returns an error object with a 404 status" do
+        value = 1
+
+        get "/api/v1/questions/random.json?value_equals=#{value}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("404")
+      end
+
+      it "returns an error object with a message describing lack of record with such properties" do
+        value = 1
+
+        get "/api/v1/questions/random.json?value_equals=#{value}"
+
+        expect(response_body_as_json["error"]["message"]).to match(/no questions with such value/)
+      end
+    end
+
+    context "with valid param `?value_equals=` used with either `value_less=` or `value_greater=`" do
+      it "returns an error object with a 400 status" do
+        low_bound = 1000
+        upper_bound = 3000
+        value = 200
+
+        get "/api/v1/questions/random.json?value_equals=#{value}&value_less=#{upper_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("400")
+
+
+        get "/api/v1/questions/random.json?value_equals=#{value}&value_greater=#{low_bound}"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("400")
+      end
+
+      it "returns an error object with a message describing proper use of value_equals (i.e. on its own)" do
+        low_bound = 1000
+        upper_bound = 3000
+        value = 200
+
+        get "/api/v1/questions/random.json?value_equals=#{value}&value_less=#{upper_bound}"
+
+        expect(response_body_as_json["error"]["message"]).to match(/may not be used with/)
+
+
+        get "/api/v1/questions/random.json?value_equals=#{value}&value_greater=#{low_bound}"
+
+        expect(response_body_as_json["error"]["message"]).to match(/may not be used with/)
+      end
+    end
   end
 end

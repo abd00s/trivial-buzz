@@ -67,6 +67,30 @@ swagger_path '/questions/{id}.json' do
         key :required, false
         key :type, :string
       end
+      parameter do
+        key :name, :value_equals
+        key :in, :query
+        key :description, "Limit results to questions with this value; May not be used with value_greater or value_less [Optional]"
+        key :required, false
+        key :type, :integer
+        key :format, :int64
+      end
+      parameter do
+        key :name, :value_greater
+        key :in, :query
+        key :description, "Limit results to questions with value greater (or equal to) than this value [Optional]"
+        key :required, false
+        key :type, :integer
+        key :format, :int64
+      end
+      parameter do
+        key :name, :value_less
+        key :in, :query
+        key :description, "Limit results to questions with value less (or equal to) than this value [Optional]"
+        key :required, false
+        key :type, :integer
+        key :format, :int64
+      end
       response 200 do
         key :description, 'question response'
         schema do

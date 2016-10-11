@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
   def self.newer_than(minimum)
     if minimum.present?
       newest = Show.order(air_date: :desc).first.air_date
-      includes(round: :show).where({"shows.air_date" => minimum..newest})
+      where({"shows.air_date" => minimum..newest})
     else
       all
     end
@@ -19,7 +19,31 @@ class Question < ActiveRecord::Base
   def self.older_than(maximum)
     if maximum.present?
       oldest = Show.order(:air_date).first.air_date
-      includes(round: :show).where({"shows.air_date" => oldest..maximum})
+      where({"shows.air_date" => oldest..maximum})
+    else
+      all
+    end
+  end
+
+  def self.value_greater(low_bound)
+    if low_bound.present?
+      where("value >= ?", low_bound)
+    else
+      all
+    end
+  end
+
+  def self.value_less(upper_bound)
+    if upper_bound.present?
+      where("value <= ? AND value > ?", upper_bound, 0)
+    else
+      all
+    end
+  end
+
+  def self.value_equals(value)
+    if value.present?
+      where(value: value.to_i)
     else
       all
     end
