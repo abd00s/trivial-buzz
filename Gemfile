@@ -67,4 +67,6 @@ gem 'mixpanel-ruby'
 
 gem 'rails_12factor', group: :production
 
+gem 'newrelic_rpm'
+
 ruby "2.2.1"
