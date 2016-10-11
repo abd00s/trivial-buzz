@@ -2,7 +2,7 @@ class ApiController < ApplicationController
   include Swagger::Blocks
   rescue_from StandardError, with: :something_went_wrong
 
-  # after_action :track_analytics
+  after_action :track_analytics
 
   respond_to :json
 
