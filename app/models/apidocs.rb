@@ -12,12 +12,6 @@ class Apidocs < ActiveRecord::Base
         key :url, 'http://abdullahonline.co/'
       end
     end
-    tag do
-      externalDocs do
-        key :description, 'See on Github'
-        key :url, 'https://swagger.io'
-      end
-    end
     key :host, 'trivial-buzz.herokuapp.com'
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
