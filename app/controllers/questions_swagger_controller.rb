@@ -70,7 +70,7 @@ swagger_path '/questions/{id}.json' do
       parameter do
         key :name, :value_equals
         key :in, :query
-        key :description, "Limit results to questions with this value; May not be used with value_greater or value_less [Optional]"
+        key :description, "Limit results to questions with this value; May not be used with value_greater or value_less. For Final Jeopardy! (or tiebreaker) questions, enter value 0. [Optional]"
         key :required, false
         key :type, :integer
         key :format, :int64
@@ -78,7 +78,7 @@ swagger_path '/questions/{id}.json' do
       parameter do
         key :name, :value_greater
         key :in, :query
-        key :description, "Limit results to questions with value greater (or equal to) than this value [Optional]"
+        key :description, "Limit results to questions with value greater than (or equal to) this value [Optional]"
         key :required, false
         key :type, :integer
         key :format, :int64
@@ -86,7 +86,7 @@ swagger_path '/questions/{id}.json' do
       parameter do
         key :name, :value_less
         key :in, :query
-        key :description, "Limit results to questions with value less (or equal to) than this value [Optional]"
+        key :description, "Limit results to questions with value less than (or equal to) this value excluding questions with value of zero [Optional]"
         key :required, false
         key :type, :integer
         key :format, :int64
