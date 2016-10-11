@@ -7,7 +7,7 @@ class ShowsSwaggerController < Api::QuestionsController
                         "</br> **shows**: Array of 3 shows" \
                         "</br> #{"&nbsp;"*4} **id**: ID of show" \
                         "</br> #{"&nbsp;"*4} **show_number**: Jeopardy! show number" \
-                        "</br> #{"&nbsp;"*4} **air_date**: Date the show aired YYYY-DD-MM" \
+                        "</br> #{"&nbsp;"*4} **air_date**: Date the show aired YYYY-MM-DD" \
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \
                         "</br> #{"&nbsp;"*8} **name**: Category name" \
@@ -68,7 +68,7 @@ class ShowsSwaggerController < Api::QuestionsController
                         "</br> **show**" \
                         "</br> #{"&nbsp;"*4} **id**: ID of show" \
                         "</br> #{"&nbsp;"*4} **show_number**: Jeopardy! show number" \
-                        "</br> #{"&nbsp;"*4} **air_date**: Date the show aired YYYY-DD-MM" \
+                        "</br> #{"&nbsp;"*4} **air_date**: Date the show aired YYYY-MM-DD" \
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in show" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \
                         "</br> #{"&nbsp;"*8} **name**: Category name" \

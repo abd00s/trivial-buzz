@@ -56,7 +56,7 @@ class CategoriesSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **shows**: Array of shows in which this category appeared" \
                         "</br> #{"&nbsp;"*8} **id**: Show ID" \
                         "</br> #{"&nbsp;"*8} **show_number**: Jeopardy! show number" \
-                        "</br> #{"&nbsp;"*8} **air_date**: Date the show aired YYYY-DD-MM" \
+                        "</br> #{"&nbsp;"*8} **air_date**: Date the show aired YYYY-MM-DD" \
                         "</br> #{"&nbsp;"*8} **url**: Link to show" \
                         "</br> #{"&nbsp;"*4} **questions**: Array of questions with this category" \
                         "</br> #{"&nbsp;"*8} **id**: Question ID" \

@@ -10,7 +10,7 @@ class RoundsSwaggerController < Api::QuestionsController
                         "</br> #{"&nbsp;"*4} **from_show**: Information about show where this round appeared" \
                         "</br> #{"&nbsp;"*8} **id**: ID of show" \
                         "</br> #{"&nbsp;"*8} **show_number**: Jeopardy! show number" \
-                        "</br> #{"&nbsp;"*8} **air_date**: Date the show aired YYYY-DD-MM" \
+                        "</br> #{"&nbsp;"*8} **air_date**: Date the show aired YYYY-MM-DD" \
                         "</br> #{"&nbsp;"*8} **url**: Link to show" \
                         "</br> #{"&nbsp;"*4} **categories**: Array of categories appearing in round" \
                         "</br> #{"&nbsp;"*8} **id**: ID of category" \

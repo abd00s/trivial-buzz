@@ -22,7 +22,7 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:newer_than])
         rescue ArgumentError, TypeError
-          display_error(400, "Invalid lower bound, newer_than format should be YYYY-DD-MM") and return
+          display_error(400, "Invalid lower bound, newer_than format should be YYYY-MM-DD") and return
         end
     end
 
@@ -31,7 +31,7 @@ class Api::QuestionsController < ApiController
         begin
           Date.parse(params[:older_than])
         rescue ArgumentError, TypeError
-          display_error(400, "Invalid upper bound, older_than format should be YYYY-DD-MM") and return
+          display_error(400, "Invalid upper bound, older_than format should be YYYY-MM-DD") and return
         end
     end
 

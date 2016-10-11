@@ -17,7 +17,7 @@ class QuestionsSwaggerController < Api::QuestionsController
                 "</br> #{"&nbsp;"*8} **from_show**: Information on show in which round appeared" \
                 "</br> #{"&nbsp;"*12} **id**: Show ID" \
                 "</br> #{"&nbsp;"*12} **show_number**: Jeopardy! show number" \
-                "</br> #{"&nbsp;"*12} **air_date**: Date the show aired YYYY-DD-MM" \
+                "</br> #{"&nbsp;"*12} **air_date**: Date the show aired YYYY-MM-DD" \
                 "</br> #{"&nbsp;"*12} **url**: link to show"
 
 swagger_path '/questions/{id}.json' do
@@ -56,14 +56,14 @@ swagger_path '/questions/{id}.json' do
       parameter do
         key :name, :newer_than
         key :in, :query
-        key :description, "Lower bound to search from (YYYY-DD-MM), starting from #{Show.order(:air_date).first.air_date} [Optional]"
+        key :description, "Lower bound to search from (YYYY-MM-DD), starting from #{Show.order(:air_date).first.air_date} [Optional]"
         key :required, false
         key :type, :string
       end
       parameter do
         key :name, :older_than
         key :in, :query
-        key :description, "Upper bound to search to (YYYY-DD-MM), up to #{Show.order(air_date: :desc).first.air_date} [Optional]"
+        key :description, "Upper bound to search to (YYYY-MM-DD), up to #{Show.order(air_date: :desc).first.air_date} [Optional]"
         key :required, false
         key :type, :string
       end
