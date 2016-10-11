@@ -1,6 +1,17 @@
 class QuestionSwaggerModel
   include Swagger::Blocks
 
+  # Used for /questions.json
+  swagger_schema :QuestionsResponse do
+    property :questions do
+      key :type, :array
+      key :items, {:'$ref' => 'QuestionsRoundsShows'}
+    end
+    property :meta do
+      key :'$ref', :MetaModel
+    end
+  end
+
   # Used for /questions/{id}.json & /questions/random.json
   swagger_schema :Question_response do
     property :question do
@@ -33,7 +44,7 @@ class QuestionSwaggerModel
     end
   end
 
-  # For use in /shows.json and /shows/{id}.json
+  # For use in /shows.json and /shows/{id}.json and /questions.json
   swagger_schema :QuestionsRoundsShows do
     property :id do
       key :type, :integer
