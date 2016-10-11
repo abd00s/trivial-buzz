@@ -23,7 +23,15 @@ class CategoriesSwaggerController < Api::QuestionsController
       parameter do
         key :name, :popular
         key :in, :query
-        key :description, 'Limits results to X most popular categories, paginated with 10 per page. [Optional]'
+        key :description, 'Limits results to X most popular categories. [Optional]'
+        key :required, false
+        key :type, :integer
+        key :format, :int64
+      end
+      parameter do
+        key :name, :minimum
+        key :in, :query
+        key :description, 'Limits results to categories with at least this number of questions. [Optional]'
         key :required, false
         key :type, :integer
         key :format, :int64

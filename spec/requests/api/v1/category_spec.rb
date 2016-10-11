@@ -56,6 +56,48 @@ RSpec.describe Category, type: :request do
       end
     end
 
+    context "with valid param ?minimum=200" do
+      it "limits returned categories to those with a minimum question count equal to param" do
+        get "/api/v1/categories.json?minimum=200"
+
+        expect(response).to be_success
+
+        expect(response_body_as_json["categories"]).to all satisfy { |category|
+          category["questions_count"] >= 200
+        }
+      end
+    end
+
+    context "with invalid param ?minimum=X" do
+      it "returns an error object with a 400 status" do
+        get "/api/v1/categories.json?minimum=X"
+
+        expect(response_body_as_json).to have_key("error")
+
+        expect(response_body_as_json["error"]["status"]).to eq("400")
+      end
+
+      it "returns an error object with a message describing bad request input" do
+        get "/api/v1/categories.json?minimum=X"
+
+        expect(response_body_as_json["error"]["message"]).to match(/invalid count limit/)
+      end
+    end
+
+    context "with valid param ?minimum=200 &popular=2" do
+      it "limits returned categories to most popular 2 results with a minimum question count equal to param" do
+        get "/api/v1/categories.json?minimum=200&popular=2"
+
+        expect(response).to be_success
+
+        expect(response_body_as_json["categories"]).to all satisfy { |category|
+          category["questions_count"] >= 200
+        }
+
+        expect(response_body_as_json["categories"].size).to eq(2)
+      end
+    end
+
     context "with valid param ?page=5" do
       it "returns results starting at page 5" do
         get "/api/v1/categories.json?page=5"
