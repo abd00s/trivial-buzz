@@ -12,7 +12,7 @@ class Apidocs < ActiveRecord::Base
         key :url, 'http://abdullahonline.co/'
       end
     end
-    key :host, "www.trivialbuzz.com"
+    key :host, 'localhost:3000'
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
