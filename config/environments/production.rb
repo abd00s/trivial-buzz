@@ -78,4 +78,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 end
-Rails.application.routes.default_url_options[:host] = "http://www.trivialbuzz.com"
+Rails.application.routes.default_url_options[:host] = "www.trivialbuzz.com"

@@ -5,14 +5,14 @@ class Apidocs < ActiveRecord::Base
     info do
       key :version, '1.0.0'
       key :title, 'Trivial Buzz'
-      key :description, "JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012. This project is unaffiliated with the Jeopardy! gameshow and claims no ownership of the questions. Questions were obtained by crawling www.j-archive.com . This is a project developed in my free time using Ruby on Rails on the backend and Swagger for documentation. An API key is not required. See more at https://github.com/abd00s/trivial-buzz"
+      key :description, "JSON API serving roughly 200,000 trivia questions from the popular gameshow, Jeopardy! spanning 1984 - 2012. This project is unaffiliated with the Jeopardy! gameshow and claims no ownership of the questions. Questions were obtained by crawling www.j-archive.com . This is a project developed in my free time using Ruby on Rails on the backend and Swagger for documentation. An API key is not required. See more at https://github.com/abd00s/trivial-buzz Ensure proper pointing to endpoints `/api/ [version e.g. v1] /[endpoint] .json` for example `www.trivialbuzz.com/api/v1/search.json?query=abdullah`"
 
       contact do
         key :name, 'Abdullah Pharaon'
         key :url, 'http://abdullahonline.co/'
       end
     end
-    key :host, 'www.trivialbuzz.com'
+    key :host, Rails.application.routes.default_url_options[:host]
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
